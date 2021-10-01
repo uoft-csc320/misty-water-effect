@@ -10,6 +10,4 @@ Here's another one.
 Code for creating misty water effect.
 
 
-Here is how to insert a picture:
-
 
