@@ -27,8 +27,7 @@ def read_im(filename, colour):
     Returns:
         (np.ndarray): image of shape
     """
-    # TODO:
-    return np.zeros((10,10,3)) # replace line with your own implementation
+    return np.zeros((10,10,3)) # TODO: replace line with your own implementation
 
 
 def write_im(filename, image):
@@ -51,7 +50,7 @@ def read_burst(dir, filetype, colour):
     Returns:
         (np.ndarray): image of shape (K, N, M, ...) where K is the number of images in dir
     """
-    imgs = [read_im("{}/{:04}.{}".format(dir, i, filetype), colour) for i in range(1, len(glob.glob(f"{dir}/*.{filetype}")))]
+    imgs = [read_im("{}/{:04}.{}".format(dir, i, filetype), colour) for i in range(1, len(glob.glob(f"{dir}/*{filetype}")))]
     imgs_stack = np.stack(imgs, axis=0)
     return imgs_stack
 
@@ -68,21 +67,19 @@ if __name__ == '__main__':
 
     # Part A.1
     # Load in an example image in colour
-    img = read_im('data/0001.jpg', cv2.IMREAD_COLOR)
+    img = read_im('./data/0001.jpg', cv2.IMREAD_COLOR)
 
     # Write the same colour image, just as practice
-    write_im('results/original-colour.png',img)
+    write_im('./results/original-colour.png',img)
 
     # Part A.2
     # Read in all images in the data directory in colour
-    imgs = read_burst('data/', '.jpg', cv2.IMREAD_COLOR)
+    imgs = read_burst('./data', '.jpg', cv2.IMREAD_COLOR)
 
     # Calculate misty image
     misty_img = calculate_misty(imgs)
 
     # Save misty image
-    write_im('results/misty-colour.png', misty_img.astype(np.uint8))
+    write_im('./results/misty-colour.png', misty_img.astype(np.uint8))
 
-
-
-    # Part B: Same process as A
+    # TODO: Part B
