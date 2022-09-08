@@ -32,7 +32,7 @@ In this tutorial, we will create the misty water effect, a photography style tha
 
 ## Topic 2: Representing images as arrays
 
-Now that we know how to read/write images with OpenCV, the next step is to investigate how images are represented: arrays. Each image can be considered an NxMx3 array, where 
+Now that we know how to read/write images with OpenCV, the next step is to investigate how images are represented: arrays. Each image can be considered an NxMx3 array, where
 
 -   N: number of rows of pixels in the image
 -   M: number of cols of pixels in the image
@@ -41,12 +41,12 @@ Now that we know how to read/write images with OpenCV, the next step is to inves
 The misty water effect can be generated with the following model:
 
 >   Suppose we have $K$ images that we want to merge into one misty effect image. Let $I_k$ represent the $k$th image, where $k \in \{1, …, K\}$. The resulting misty image can be determined by a per pixel, per colour channel averaging:
+
+>
 >   $$
 >   I_{\text{misty}} = \frac{1}{K}\large\sum_{k=1}^{K}I_k
 >   $$
 >
 
+
 ## Topic 3: Grayscale vs. 3-channel colour images
-
-
-
