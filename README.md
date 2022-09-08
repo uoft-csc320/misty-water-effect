@@ -2,50 +2,12 @@
 
 Date: Sept. 8th, 2022  
 
-In this tutorial, we will create the misty water effect, a photography style that makes moving water (or any moving fluid/cloud) look soft and flowing. For example, let's compare an original image of the [Great Gorge](https://www.niagarafallstourism.com/play/outdoor-recreation/white-water-walk/) near [Niagara Falls](https://www.niagaraparks.com) with another image taken from the same location with the misty water effect applied:
+In this tutorial, we will create the misty water effect, a stylistic photography effect that processes moving water look soft and flowing. For example, let's compare an original single image of the [Great Gorge](https://www.niagarafallstourism.com/play/outdoor-recreation/white-water-walk/) near [Niagara Falls](https://www.niagaraparks.com) with another image taken from the same location that has the misty water effect applied:
 
 ![misty0](media/figure0.png)
 
-The misty water effect can be created by taking a burst of (usually) 20+ images, and then doing a per pixel average.
+The misty water effect can be created by taking a burst of (usually) 20+ images, and then doing a per pixel average:
 
-### Organization
-
-`README.md`: final product
-
-`STUDENT.md`: student version, to be filled in
-
-`data/`: contains burst of images we will be using for this tutorial
-
-`media/`: example figures
-
-
-## Learning objectives
-
-1. Overview of OpenCV in Python (reading & writing)
-2. Representing images as arrays
-3. Grayscale vs. 3-channel colour images
-
-## Topic 1: Overview of OpenCV in Python
-To read/write an image, take a look at the [docs](https://docs.opencv.org/3.1.0/dc/d2e/tutorial_py_image_display.html).
-
-
-Let's use OpenCV to read an example image of our scene in `data/` so we can see what we are working with:
-
-![misty0](media/figure1.png)
-
-The image above is a single capture from a burst of images. Even though the water is moving very fast,
-the image still retains a lot of detail and does not have that smooth effect we want to create.
-
-## Topic 2: Representing images as arrays
-
-Now that we know how to read/write images with OpenCV, the next step is to investigate how our images are represented: arrays. Each coloured image can be considered as an NxMx3 NumPy array, where
-
--   N: number of rows of pixels in the image
--   M: number of cols of pixels in the image
--   3: number of colour channels, in this case it is RGB
-
-
-The misty water effect can be generated with the following model:
 
 >   Suppose we have $K$ images that we want to merge into one misty effect image. Let $I_k$ represent the $k$th image, where $k \in \{1, …, K\}$. The resulting misty image can be determined by a per pixel, per colour channel averaging:
 
@@ -55,13 +17,94 @@ The misty water effect can be generated with the following model:
 >$$
 >
 
-**Steps for creating a misty effect image**
-1. Read in all images in `data/`. We need a lot of images to create the effect
-2. Stack all images into a single array such that the stack has dimensions (K, N, M, 3). Take a look at these [NumPy docs](https://numpy.org/doc/stable/reference/generated/numpy.stack.html) for hints on doing the stacking.
-3. Average over dimension 0 (K) to get the misty image of size (N,M,3). Take a look at these [NumPy docs](https://numpy.org/doc/stable/reference/generated/numpy.mean.html) for hints on doing the averaging
+
+The task of this activity is to complete the technique's implementation.
+
+**Goals**: The goals of this activity are to: (1) overview of OpenCV in Python with respective to file I/O with images, (2) seeing
+how images are represented as arrays, (3) comparing grayscale vs 3-channel colour images.
+
+**Important**: You should be familiar (or make it a TODO) with creating and managing [conda](https://docs.conda.io/en/latest/) environments. conda is a great tool for helping us handle Python packages and their dependencies library dependencies. Becoming familiar with it is a good investment for upcoming assignments.
+
+## Getting started
+
+### Installation
+
+Create a conda environment:
+```
+conda create -n misty
+conda activate misty
+pip install --upgrade pip
+```
+
+Install requirements:
+```
+pip install -r requirements.txt
+```
+
+### Organization
+
+>   Important: Everything you need to implement is in `main.py`, labeled with a `# TODO:`. You do not need to make any other changes.
+
+`README.md`: final product, the TA demo version
+
+`STUDENT.md`: student version, to be filled in by the student during tutorial
+
+`main.py`: location where students should implement effect
+
+`data/`: contains burst of images we will be merging into one misty effect image
+
+`media/`: example figures for TA demo version
+
+`scripts/`: contains helper scripts
+
+`results/`: location students will write their images to
 
 
-Following the steps above and applying it to all 20+ images in `data/`, the misty water effect image we get is:
+## Part A: Implementing the misty water effect on colour images
+
+In this section, you will implement the following:
+
+1. Image reading
+2. Image writing
+3. Array averaging across a specified axis
+
+All of these implementations will go in the specified functions in `main.py`.
+You only need to write code in locations that have been specified with a `#TODO:`.
+
+### A.1: Reading and writing images: `read_im()` and `write_im()`
+
+Implement the code needed for reading in an image in `read_im()` and writing in `write_im()`. Take a look at the [docs](https://docs.opencv.org/3.1.0/dc/d2e/tutorial_py_image_display.html) for help.
+
+Once you finish implementing `read_im()` and `write_im()`, run `main.py`:
+
+```
+python main.py
+```
+
+After running, you should see an example original image we are working with here:
+![misty0](media/figure1.png)
+
+The image above is a single capture from a burst of images. Even though the water is moving very fast,
+the image still retains a lot of detail and does not have that smooth effect we want to create.
+
+## A.2: Generating a misty effect image by averaging across a specified axis: `calculate_misty()`
+
+The general steps for creating a coloured misty water effect image are as follows:
+1. Read in all images in burst. We need a lot of images (20+) to create a smooth effect. We assume that each image in burst has the same number of pixels and dimensions.
+2. Stack all images into a single array such that the stack has dimensions (K, N, M, 3). Take a look at these [NumPy docs](https://numpy.org/doc/stable/reference/generated/numpy.stack.html) for hints on doing the stacking. Here, K is the number of images in our burst, N is the number of rows of pixels in each image, M is the number of colours of pixels. 3 represents our three colour channels RGB.
+3. Average over dimension 0 (K) to get the misty image of size (N,M,3). The result will be the misty effect image
+
+
+For this section, step 1 builds upon your `read_im()` implementation from [](). Step 2 has already been implemented for you.
+All that is needed to be done is step 3, the averaging in `calculate_misty()`. Take a look at these [NumPy docs](https://numpy.org/doc/stable/reference/generated/numpy.mean.html) for hints on doing the averaging
+
+Once you finish implementing `read_im()` and `write_im()`, run `main.py` again:
+
+```
+python main.py
+```
+
+After running, you should see your misty image here:
 
 ![misty0](media/figure2.png)
 
