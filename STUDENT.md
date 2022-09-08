@@ -2,85 +2,36 @@
 
 Date: Sept. 8th, 2022  
 
-In this tutorial, we will create the misty water effect, a photography style that makes moving water (or any moving fluid/cloud) look soft and flowing. For example, let's compare an original image of the [Great Gorge](https://www.niagarafallstourism.com/play/outdoor-recreation/white-water-walk/) near [Niagara Falls](https://www.niagaraparks.com) with another image taken from the same location with the misty water effect applied:
+This is the student template that will be populated as we implement our code.
+Our results will be the images seen in the main README.md
+Prior to running our implementation, our results will be replaced with black placeholders.
 
-![misty0](media/figure0.png)
-
-The misty water effect can be created by taking a burst of (usually) 20+ images, and then doing a per pixel average.
-
-The students' task is to generate all of the figures needed for the visualizations.
-
-### Organization
-
-`README.md`: final product
-
-`STUDENT.md`: student version, to be filled in
-
-`data/`: contains images needed for tutorial
-
-`media/`: example figures
-
-`results/`: @students: empty directory for students to write to, need to be made
-
-## Learning objectives
-
-1. Overview of OpenCV in Python (reading & writing)
-2. Representing images as arrays
-3. Grayscale vs. 3-channel colour images
-
-## Topic 1: Overview of OpenCV in Python
-To read/write an image, take a look at the [docs](https://docs.opencv.org/3.1.0/dc/d2e/tutorial_py_image_display.html).
-
-@student: load in one of the images in `data/` in colour.
+In each section below, there will also be some discussion questions for the student to complete.
 
 
-This is the scene we're working with:
+## A.1: Read/Write images in OpenCV
+Follow the steps in the README. Once completed properly, an example original
+image (coloured) will show up here.
+![misty0](results/original-colour.png)
 
-![misty0](results/figure1.png)
+**Questions**
+1. What's the datatype of the data we read in with our function `read_im()`?  
+2. What are the image dimensions (N, M) of the data we are working with? How can you tell?  
+3. We're working with coloured images. Which dimension/index does red correspond to? How about green?
 
-So far, the water has quite a bit of detail.
+## A.2: Averaging over stack of images
+Follow the steps in the README. Once completed properly, the final misty effect image
+(coloured) will show up here.
+![misty0](results/misty-colour.png)
 
-## Topic 2: Representing images as arrays
-
-Now that we know how to read/write images with OpenCV, the next step is to investigate how images are represented: arrays. Each image can be considered an NxMx3 array, where
-
--   N: number of rows of pixels in the image
--   M: number of cols of pixels in the image
--   3: number of colour channels, in this case it is RGB
-
-
-Q: What's the data type?
-
-Q: What are the image dimensions?
-
-Q: Which dimension/index does red correspond to? green?
-
-The misty water effect can be generated with the following model:
-
->   Suppose we have $K$ images that we want to merge into one misty effect image. Let $I_k$ represent the $k$th image, where $k \in \{1, …, K\}$. The resulting misty image can be determined by a per pixel, per colour channel averaging:
-
->
->$$
->   I_{\text{misty}} = \frac{1}{K}\large\sum_{k=1}^{K}I_k
->$$
->
-
-**Steps**
-1. Read in all images in `data/`. We need a lot of images to create the effect
-2. Stack all images into a single array such that the stack has dimensions (K, N, M, 3). Take a look at these [NumPy docs](https://numpy.org/doc/stable/reference/generated/numpy.stack.html) for hints on doing the stacking.
-3. Average over dimension 0 (K) to get the misty image of size (N,M,3). Take a look at these [NumPy docs](https://numpy.org/doc/stable/reference/generated/numpy.mean.html) for hints on doing the averaging
+**Question**: Which dimension should be be averaging over?
 
 
-@student: do the steps above
-And so, the misty water effect image is:
-![misty0](results/figure2.png)
+## B: Repeating A.1 and A.2 for greyscale
+Original image (greyscale):
+![misty0](results/original-grey.png)
 
-## Topic 3: Grayscale vs. 3-channel colour images
+Misty image (greyscale):
+![misty0](results/misty-grey.png)
 
-We can also choose to read our images in greyscale:
-
-![misty0](results/figure3.png)
-
-Repeating the same exercise as before with generating the misty water effect:
-
-![misty0](results/figure4.png)
+**Question**: What's is the value of c for our greyscale stack with shape (K, N, M, c)?

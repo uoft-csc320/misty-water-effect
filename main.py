@@ -82,3 +82,7 @@ if __name__ == '__main__':
 
     # Save misty image
     write_im('results/misty-colour.png', misty_img.astype(np.uint8))
+
+
+
+    # Part B: Same process as A
