@@ -2,8 +2,6 @@
 
 Date: Sept. 8th, 2022  
 
-Author: Esther Lin
-
 In this tutorial, we will create the misty water effect, a photography style that makes moving water (or any moving fluid/cloud) look soft and flowing. For example, let's compare an original image of the [Great Gorge](https://www.niagarafallstourism.com/play/outdoor-recreation/white-water-walk/) near [Niagara Falls](https://www.niagaraparks.com) with another image taken from the same location with the misty water effect applied:
 
 ![misty0](media/figure0.png)
@@ -31,7 +29,7 @@ In this tutorial, we will create the misty water effect, a photography style tha
 ## Topic 1: Overview of OpenCV in Python
 To read/write an image, take a look at the [docs](https://docs.opencv.org/3.1.0/dc/d2e/tutorial_py_image_display.html).
 
-@student: load in one of the images in `data/`.
+@student: load in one of the images in `data/` in colour. 
 
 
 This is the scene we're working with:
@@ -76,4 +74,10 @@ And so, the misty water effect image is:
 
 ## Topic 3: Grayscale vs. 3-channel colour images
 
-@estheroate
+We can also choose to read our images in greyscale: 
+
+![misty0](media/figure3.png)
+
+Repeating the same exercise as before with generating the misty water effect:
+
+![misty0](media/figure4.png)
