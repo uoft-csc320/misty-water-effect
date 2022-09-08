@@ -4,7 +4,8 @@ Date: Sept. 8th, 2022
 
 This is the student template that will be populated as we implement our code.
 Our results will be the images seen in the main README.md
-Prior to running our implementation, our results will be replaced with black placeholders.
+Prior to running our implementation, our results are black placeholders. You should not need to 
+modify this readme. 
 
 In each section below, there will also be some discussion questions for the student to complete.
 
