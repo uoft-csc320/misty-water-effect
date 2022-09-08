@@ -27,6 +27,12 @@ how images are represented as arrays, (3) comparing grayscale vs 3-channel colou
 
 ## Getting started
 
+Head into our project directory:
+
+```
+cd misty-water-effect
+```
+
 ### Installation
 
 Create a conda environment:
