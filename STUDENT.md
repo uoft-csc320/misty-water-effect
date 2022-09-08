@@ -6,7 +6,9 @@ In this tutorial, we will create the misty water effect, a photography style tha
 
 ![misty0](media/figure0.png)
 
-@estheroate: usually done with a burst of 20+ images
+The misty water effect can be created by taking a burst of (usually) 20+ images, and then doing a per pixel average.
+
+The students' task is to generate all of the figures needed for the visualizations.
 
 ### Organization
 
@@ -29,11 +31,12 @@ In this tutorial, we will create the misty water effect, a photography style tha
 ## Topic 1: Overview of OpenCV in Python
 To read/write an image, take a look at the [docs](https://docs.opencv.org/3.1.0/dc/d2e/tutorial_py_image_display.html).
 
-@student: load in one of the images in `data/` in colour. 
+@student: load in one of the images in `data/` in colour.
 
 
 This is the scene we're working with:
-![misty0](media/figure1.png)
+
+![misty0](results/figure1.png)
 
 So far, the water has quite a bit of detail.
 
@@ -70,14 +73,14 @@ The misty water effect can be generated with the following model:
 
 @student: do the steps above
 And so, the misty water effect image is:
-![misty0](media/figure2.png)
+![misty0](results/figure2.png)
 
 ## Topic 3: Grayscale vs. 3-channel colour images
 
-We can also choose to read our images in greyscale: 
+We can also choose to read our images in greyscale:
 
-![misty0](media/figure3.png)
+![misty0](results/figure3.png)
 
 Repeating the same exercise as before with generating the misty water effect:
 
-![misty0](media/figure4.png)
+![misty0](results/figure4.png)
