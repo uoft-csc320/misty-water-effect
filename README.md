@@ -18,7 +18,7 @@ In this tutorial, we will create the misty water effect, a photography style tha
 
 `media/`: example figures
 
-`results/`: empty directory for students to write to
+`results/`: @students: empty directory for students to write to, need to be made
 
 ## Learning objectives
 
