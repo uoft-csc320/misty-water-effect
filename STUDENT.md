@@ -6,7 +6,7 @@ In this tutorial, we will create the misty water effect, a photography style tha
 
 ![misty0](media/figure0.png)
 
-The misty water effect can be created by taking a burst of (usually) 20+ images, and then doing a per pixel average.
+@estheroate: usually done with a burst of 20+ images
 
 ### Organization
 
@@ -14,10 +14,11 @@ The misty water effect can be created by taking a burst of (usually) 20+ images,
 
 `STUDENT.md`: student version, to be filled in
 
-`data/`: contains burst of images we will be using for this tutorial
+`data/`: contains images needed for tutorial
 
 `media/`: example figures
 
+`results/`: @students: empty directory for students to write to, need to be made
 
 ## Learning objectives
 
@@ -28,22 +29,28 @@ The misty water effect can be created by taking a burst of (usually) 20+ images,
 ## Topic 1: Overview of OpenCV in Python
 To read/write an image, take a look at the [docs](https://docs.opencv.org/3.1.0/dc/d2e/tutorial_py_image_display.html).
 
+@student: load in one of the images in `data/` in colour. 
 
-Let's use OpenCV to read an example image of our scene in `data/` so we can see what we are working with:
 
+This is the scene we're working with:
 ![misty0](media/figure1.png)
 
-The image above is a single capture from a burst of images. Even though the water is moving very fast,
-the image still retains a lot of detail and does not have that smooth effect we want to create.
+So far, the water has quite a bit of detail.
 
 ## Topic 2: Representing images as arrays
 
-Now that we know how to read/write images with OpenCV, the next step is to investigate how our images are represented: arrays. Each coloured image can be considered as an NxMx3 NumPy array, where
+Now that we know how to read/write images with OpenCV, the next step is to investigate how images are represented: arrays. Each image can be considered an NxMx3 array, where
 
 -   N: number of rows of pixels in the image
 -   M: number of cols of pixels in the image
 -   3: number of colour channels, in this case it is RGB
 
+
+Q: What's the data type?
+
+Q: What are the image dimensions?
+
+Q: Which dimension/index does red correspond to? green?
 
 The misty water effect can be generated with the following model:
 
@@ -55,24 +62,22 @@ The misty water effect can be generated with the following model:
 >$$
 >
 
-**Steps for creating a misty effect image**
+**Steps**
 1. Read in all images in `data/`. We need a lot of images to create the effect
 2. Stack all images into a single array such that the stack has dimensions (K, N, M, 3). Take a look at these [NumPy docs](https://numpy.org/doc/stable/reference/generated/numpy.stack.html) for hints on doing the stacking.
 3. Average over dimension 0 (K) to get the misty image of size (N,M,3). Take a look at these [NumPy docs](https://numpy.org/doc/stable/reference/generated/numpy.mean.html) for hints on doing the averaging
 
 
-Following the steps above and applying it to all 20+ images in `data/`, the misty water effect image we get is:
-
+@student: do the steps above
+And so, the misty water effect image is:
 ![misty0](media/figure2.png)
-
-Compared to the single capture from a burst of images in the [previous section](#topic-1-overview-of-opencv-in-python) the water looks much smoother, achieving the misty effect we wanted.
 
 ## Topic 3: Grayscale vs. 3-channel colour images
 
-In the previous two sections, we chose to manipulate the coloured (RGB) image. We can also choose to read our images in greyscale:
+We can also choose to read our images in greyscale: 
 
 ![misty0](media/figure3.png)
 
-Repeating the same exercise as before with generating the misty water effect on greyscale images:
+Repeating the same exercise as before with generating the misty water effect:
 
 ![misty0](media/figure4.png)
