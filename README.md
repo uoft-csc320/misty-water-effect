@@ -66,6 +66,14 @@ pip install -r requirements.txt
 `results/`: location students will write their images to
 
 
+### Running
+At this point, before we have implemented anything, you can try running the skeleton code with 
+
+```
+python main.py
+```
+All that will be generated are black box placeholders, which can be found in STUDENT.md. Once something is implemented, try running `main.py` again.
+
 ## Part A: Implementing the misty water effect on colour images
 
 In this section, you will implement the following:
