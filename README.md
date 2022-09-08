@@ -9,7 +9,7 @@ In this tutorial, we will create the misty water effect, a stylistic photography
 The misty water effect can be created by taking a burst of (usually) 20+ images, and then doing a per pixel average:
 
 
->   Suppose we have $K$ images that we want to merge into one misty effect image. Let $I_k$ represent the $k$th image, where $k \in \{1, …, K\}$. The resulting misty image can be determined by a per pixel, per colour channel averaging:
+>   Suppose we have $K$ images that we want to merge into one misty effect image. Let $I_k$ represent the $k-th$ image, where $k \in \{1, …, K\}$. The resulting misty image can be determined by a per pixel, per colour channel averaging:
 
 >
 >$$
@@ -87,7 +87,7 @@ After running, you should see an example original image we are working with here
 The image above is a single capture from a burst of images. Even though the water is moving very fast,
 the image still retains a lot of detail and does not have that smooth effect we want to create.
 
-## A.2: Generating a misty effect image by averaging across a specified axis: `calculate_misty()`
+### A.2: Generating a misty effect image by averaging across a specified axis: `calculate_misty()`
 
 The general steps for creating a coloured misty water effect image are as follows:
 1. Read in all images in burst. We need a lot of images (20+) to create a smooth effect. We assume that each image in burst has the same number of pixels and dimensions.
@@ -95,7 +95,7 @@ The general steps for creating a coloured misty water effect image are as follow
 3. Average over dimension 0 (K) to get the misty image of size (N,M,3). The result will be the misty effect image
 
 
-For this section, step 1 builds upon your `read_im()` implementation from [](). Step 2 has already been implemented for you.
+For this section, step 1 builds upon your `read_im()` implementation from [section A.1](#a1-reading-and-writing-images-read_im-and-write_im). Step 2 has already been implemented for you.
 All that is needed to be done is step 3, the averaging in `calculate_misty()`. Take a look at these [NumPy docs](https://numpy.org/doc/stable/reference/generated/numpy.mean.html) for hints on doing the averaging
 
 Once you finish implementing `read_im()` and `write_im()`, run `main.py` again:
@@ -110,12 +110,13 @@ After running, you should see your misty image here:
 
 Compared to the single capture from a burst of images in the [previous section](#topic-1-overview-of-opencv-in-python) the water looks much smoother, achieving the misty effect we wanted.
 
-## Topic 3: Grayscale vs. 3-channel colour images
+## Part B: Generating greyscale misty effect images
 
-In the previous two sections, we chose to manipulate the coloured (RGB) image. We can also choose to read our images in greyscale:
+In the [previous section](#part-a-implementing-the-misty-water-effect-on-colour-images), we chose to manipulate the coloured (RGB) image. We can also choose to manipulate our image in greyscale.
+All that is need to be done is a quick OpenCV flag switch in the reading process. Doing so, we can get a greyscale example original image:
 
 ![misty0](media/figure3.png)
 
-Repeating the same exercise as before with generating the misty water effect on greyscale images:
+Repeating the same exercise as before with generating the misty water effect on greyscale images (without writing extra code):
 
 ![misty0](media/figure4.png)
