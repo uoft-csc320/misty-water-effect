@@ -30,6 +30,10 @@ In this tutorial, we will create the misty water effect, a photography style tha
 
 ## Topic 1: Overview of OpenCV in Python
 To read/write an image, take a look at the [docs](https://docs.opencv.org/3.1.0/dc/d2e/tutorial_py_image_display.html).
+
+@student: load in one of the images in `data/`.
+
+
 This is the scene we're working with:
 ![misty0](media/figure1.png)
 
@@ -42,6 +46,7 @@ Now that we know how to read/write images with OpenCV, the next step is to inves
 -   N: number of rows of pixels in the image
 -   M: number of cols of pixels in the image
 -   3: number of colour channels, in this case it is RGB
+
 
 Q: What's the data type?
 
@@ -59,7 +64,16 @@ The misty water effect can be generated with the following model:
 >$$
 >
 
+**Steps**
+1. Read in all images in `data/`. We need a lot of images to create the effect
+2. Stack all images into a single array such that the stack has dimensions (K, N, M, 3). Take a look at these [NumPy docs](https://numpy.org/doc/stable/reference/generated/numpy.stack.html) for hints on doing the stacking.
+3. Average over dimension 0 (K) to get the misty image of size (N,M,3). Take a look at these [NumPy docs](https://numpy.org/doc/stable/reference/generated/numpy.mean.html) for hints on doing the averaging
+
+
+@student: do the steps above
 And so, the misty water effect image is:
 ![misty0](media/figure2.png)
 
 ## Topic 3: Grayscale vs. 3-channel colour images
+
+@estheroate
