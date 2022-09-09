@@ -27,7 +27,7 @@ def read_im(filename, colour):
     Returns:
         (np.ndarray): image of shape
     """
-    return np.zeros((10,10)) # TODO: replace line with your own implementation
+    return cv2.imread(filename, colour) # TODO: replace line with your own implementation
 
 
 def write_im(filename, image):
@@ -37,7 +37,7 @@ def write_im(filename, image):
         filename (str): path to write to
         image (np.ndarray): image to be written
     """
-    # TODO: your code
+    cv2.imwrite(filename, image)
 
 def read_burst(dir, filetype, colour):
     """Read in all of the .jpg or .png images in a directory
@@ -50,7 +50,7 @@ def read_burst(dir, filetype, colour):
     Returns:
         (np.ndarray): image of shape (K, N, M, ...) where K is the number of images in dir
     """
-    imgs = [read_im("{}/{:04}.{}".format(dir, i, filetype), colour) for i in range(1, len(glob.glob(f"{dir}/*{filetype}")))]
+    imgs = [read_im("{}/{:04}{}".format(dir, i, filetype), colour) for i in range(1, len(glob.glob(f"{dir}/*{filetype}")))]
     imgs_stack = np.stack(imgs, axis=0)
     return imgs_stack
 
@@ -61,13 +61,14 @@ def calculate_misty(image_stack):
         image_stack (np.ndarray): stack of images to be mistified, shape is (K, N, M, ...), where ... is the number of colour channels
 
     """
-    return image_stack[0,...] # TODO: replace with your implementation
+    return np.mean(image_stack, axis=0) # TODO: replace with your implementation
 
 if __name__ == '__main__':
 
     # Part A.1
     # Load in an example image in colour
     img = read_im('./data/0001.jpg', cv2.IMREAD_COLOR)
+    print("Colour", type(img), img.shape)
 
     # Write the same colour image, just as practice
     write_im('./results/original-colour.png',img)
@@ -80,6 +81,12 @@ if __name__ == '__main__':
     misty_img = calculate_misty(imgs)
 
     # Save misty image
-    write_im('./results/misty-colour.png', misty_img.astype(np.uint8))
+    write_im('./results/misty-colour.png', misty_img)
 
-    # TODO: Part B
+    # TODO: Part B, just a copy of part A but with different cv2 flag
+    img = read_im('./data/0001.jpg', cv2.IMREAD_GRAYSCALE)
+    print("Gray", type(img), img.shape)
+    write_im('./results/original-grey.png',img)
+    imgs = read_burst('./data', '.jpg', cv2.IMREAD_GRAYSCALE)
+    misty_img = calculate_misty(imgs)
+    write_im('./results/misty-grey.png', misty_img)

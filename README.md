@@ -23,7 +23,7 @@ The task of this activity is to complete the technique's implementation.
 **Goals**: The goals of this activity are to: (1) overview of OpenCV in Python with respective to file I/O with images, (2) seeing
 how images are represented as arrays, (3) comparing grayscale vs 3-channel colour images.
 
-**Important**: You should be familiar (or make it a TODO) with creating and managing [conda](https://docs.conda.io/en/latest/) environments. conda is a great tool for helping us handle Python packages and their dependencies library dependencies. Becoming familiar with it is a good investment for upcoming assignments.
+**Important**: You should be familiar (or make it a TODO) with creating and managing [conda](https://docs.conda.io/en/latest/) environments. conda is a great tool for helping us handle Python packages and their dependencies . Becoming familiar with it is a good investment for upcoming assignments. Follow the instructions [here](https://conda.io/projects/conda/en/latest/user-guide/install/download.html) for download, and these [docs](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) for tips on environment creation/deletions.
 
 ## Getting started
 
@@ -67,12 +67,15 @@ pip install -r requirements.txt
 
 
 ### Running
-At this point, before we have implemented anything, you can try running the skeleton code with 
+At this point, before we have implemented anything, you can try running the skeleton code with
 
 ```
 python main.py
 ```
 All that will be generated are black box placeholders, which can be found in STUDENT.md. Once something is implemented, try running `main.py` again.
+
+**Note:** it could be possible that because of `PATH` issues, there is a redirect to an incorrect python verion. One example would be the command `python` starting up `python2.7` instead of `python3.7` despite being in the correct environment. This can cause issues with the OpenCV version for `python3.7`. It's possible to diagose this issue by running `which python` in your environment and checking that 
+you are using the Python in said environment.
 
 ## Part A: Implementing the misty water effect on colour images
 
