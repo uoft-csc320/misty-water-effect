@@ -1,1 +1,1 @@
-Populate this directory with figure-{} (your results)
+Populate this directory with your results
