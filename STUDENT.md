@@ -25,7 +25,7 @@ Follow the steps in the README. Once completed properly, the final misty effect 
 (coloured) will show up here.
 ![misty0](results/misty-colour.png)
 
-**Question**: Which dimension should be be averaging over?
+**Question**: What dimension should we be averaging over?
 
 
 ## B: Repeating A.1 and A.2 for greyscale
