@@ -74,8 +74,10 @@ python main.py
 ```
 All that will be generated are black box placeholders, which can be found in STUDENT.md. Once something is implemented, try running `main.py` again.
 
-**Note:** it could be possible that because of `PATH` issues, there is a redirect to an incorrect python verion. One example would be the command `python` starting up `python2.7` instead of `python3.7` despite being in the correct environment. This can cause issues with the OpenCV version for `python3.7`. It's possible to diagose this issue by running `which python` in your environment and checking that 
+**Note:** it could be possible that because of `PATH` issues, there is a redirect to an incorrect python verion. One example would be the command `python` starting up `python2.7` instead of `python3.7` despite being in the correct environment. This can cause issues with the OpenCV version for `python3.7`. It's possible to diagnose this issue by running `which python` in your environment and checking that
 you are using the Python in said environment.
+
+**Update:** some students have found that swapping out the command `python` for `python3` and `pip` for `pip3` may fix the issue above.
 
 ## Part A: Implementing the misty water effect on colour images
 
