@@ -27,7 +27,8 @@ def read_im(filename, colour):
     Returns:
         (np.ndarray): image of shape
     """
-    return cv2.imread(filename, colour) # TODO: replace line with your own implementation
+    # TODO: replace with your implementation
+    return None
 
 
 def write_im(filename, image):
@@ -37,7 +38,8 @@ def write_im(filename, image):
         filename (str): path to write to
         image (np.ndarray): image to be written
     """
-    cv2.imwrite(filename, image)
+    # TODO: replace with your implementation
+    pass
 
 def read_burst(dir, filetype, colour):
     """Read in all of the .jpg or .png images in a directory
@@ -50,9 +52,8 @@ def read_burst(dir, filetype, colour):
     Returns:
         (np.ndarray): image of shape (K, N, M, ...) where K is the number of images in dir
     """
-    imgs = [read_im("{}/{:04}{}".format(dir, i, filetype), colour) for i in range(1, len(glob.glob(f"{dir}/*{filetype}")))]
-    imgs_stack = np.stack(imgs, axis=0)
-    return imgs_stack
+    # TODO: replace with your implementation
+    return None
 
 def calculate_misty(image_stack):
     """Calculates the misty effect image
@@ -61,7 +62,8 @@ def calculate_misty(image_stack):
         image_stack (np.ndarray): stack of images to be mistified, shape is (K, N, M, ...), where ... is the number of colour channels
 
     """
-    return np.mean(image_stack, axis=0) # TODO: replace with your implementation
+    # TODO: replace with your implementation
+    return None
 
 if __name__ == '__main__':
 
