@@ -37,14 +37,14 @@ cd misty-water-effect
 
 Create a conda environment:
 ```
-conda create -n misty python=3.7
+conda create -n misty python=3.10
 conda activate misty
-pip install --upgrade pip
+python -m pip install --upgrade pip
 ```
 
 Install requirements:
 ```
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
 
 ### Organization
